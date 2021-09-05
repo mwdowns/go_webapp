@@ -3,6 +3,7 @@ package handlers
 import (
 	"fmt"
 	"go_webapp/pkg/config"
+	"go_webapp/pkg/models"
 	"go_webapp/pkg/render"
 	"net/http"
 )
@@ -26,11 +27,14 @@ func NewHandlers(r *Repository) {
 // Home route
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("this is the home page")
-	render.RenderTemplate(w, "home.page.tmpl")
+	render.RenderTemplate(w, "home.page.tmpl", &models.TemplateData{})
 }
 
 // About route
 func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("this is the about page")
-	render.RenderTemplate(w, "about.page.tmpl")
+
+	strMap := make(map[string]string)
+	strMap["test"] = "Heyo"
+	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{StringMap: strMap})
 }
