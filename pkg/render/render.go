@@ -26,7 +26,7 @@ func AddDefaultData(td *models.TemplateData) *models.TemplateData {
 	return td
 }
 
-// renderTemplate to renter templates for routes
+// RenderTemplate to renter templates for routes
 func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData) {
 	var tc map[string]*template.Template
 	if app.UseCache {
@@ -50,7 +50,7 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 	}
 }
 
-// createTemplateCache does what it says on the tin
+// CreateTemplateCache does what it says on the tin
 func CreateTemplateCache() (map[string]*template.Template, error) {
 	myCache := map[string]*template.Template{}
 
@@ -75,6 +75,7 @@ func CreateTemplateCache() (map[string]*template.Template, error) {
 	return myCache, nil
 }
 
+// handleError is local error handler
 func handleError(c map[string]*template.Template, e error) (map[string]*template.Template, error) {
 	if e != nil {
 		fmt.Println("Error:", e)
