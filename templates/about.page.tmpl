@@ -5,7 +5,14 @@
       <div class="col">
         <h1>about page yo</h1>
         <p>more paragraph text, yo</p>
-        <p>got some data for you {{ index .StringMap "test" }}<p>
+        <p>got some data for you {{ index .StringMap "test" }}</p>
+        <p>
+          {{ if ne (index .StringMap "remote_ip") "" }}
+            This is your ip {{ index .StringMap "remote_ip" }}
+          {{ else }}
+            Please vist <a href="http://localhost:8080/">Home</a> to set your ip.
+          {{ end }}
+        </p>
       </div>
     </div>
   </div>

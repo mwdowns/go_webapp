@@ -8,11 +8,25 @@ import (
 	"go_webapp/pkg/render"
 	"log"
 	"net/http"
+	"time"
+
+	"github.com/alexedwards/scs/v2"
 )
+
+var app config.AppConfig
+var session *scs.SessionManager
 
 // main serves the app
 func main() {
-	var app config.AppConfig
+	app.InProduction = false
+
+	session = scs.New()
+	session.Lifetime = 24 * time.Hour
+	session.Cookie.Persist = true
+	session.Cookie.SameSite = http.SameSiteLaxMode
+	session.Cookie.Secure = app.InProduction
+
+	app.Session = session
 
 	tc, err := render.CreateTemplateCache()
 	if err != nil {
@@ -30,7 +44,7 @@ func main() {
 		Addr:    constants.PortNumber,
 		Handler: routes(&app),
 	}
-	
+
 	fmt.Println("listing on port", constants.PortNumber)
 	err = srv.ListenAndServe()
 	if err != nil {
