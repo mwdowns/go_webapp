@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"go_webapp/pkg/config"
 	"go_webapp/pkg/constants"
 	"go_webapp/pkg/handlers"
 	"go_webapp/pkg/render"
+	"log"
 	"net/http"
 )
 
@@ -26,9 +26,14 @@ func main() {
 
 	render.NewTemplates(&app)
 
-	http.HandleFunc("/", handlers.Repo.Home)
-	http.HandleFunc("/about", handlers.Repo.About)
-
+	srv := &http.Server{
+		Addr:    constants.PortNumber,
+		Handler: routes(&app),
+	}
+	
 	fmt.Println("listing on port", constants.PortNumber)
-	http.ListenAndServe(constants.PortNumber, nil)
+	err = srv.ListenAndServe()
+	if err != nil {
+		fmt.Println("could not serve app")
+	}
 }
