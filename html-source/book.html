@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-  <title>About</title>
+  <title>Make Reservation</title>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -45,42 +45,85 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <form>
-          <div class="input-group">
-            <span class="input-group-text">First Name</span>
-            <input required type="text" id="first_name" name="first_name" aria-label="First name" class="form-control">
-            <span class="input-group-text">Last Name</span>
-            <input type="text" id="first_name" name="first_nae" aria-label="Last name" class="form-control">
+        <form class="row g-3 needs-validation" novalidate>
+          <div class="col-md-4">
+            <label for="first_name" class="form-label">First name</label>
+            <input type="text" class="form-control" id="first_name" name="first_name" required>
+            <div class="invalid-feedback">
+              Please enter your first name.
+            </div>
           </div>
-
-          <div class="input-group">
-            <span class="input-group-text">Email</span>
-            <input required type="email" class="form-control" id="email" name="email" placeholder="name@example.com"> 
+          <div class="col-md-4">
+            <label for="last_name" class="form-label">Last name</label>
+            <input type="text" class="form-control" id="last_name" name="last_name" required>
+            <div class="invalid-feedback">
+              Please enter your last name.
+            </div>
           </div>
-
-          <div class="input-group">
-            <span class="input-group-text">Room</span>
-            <select class="form-select" id="room" name="room" aria-label="Default select example">
-              <option selected>Choose your room</option>
+          <div class="col-md-4">
+            <label for="email" class="form-label">Email</label>
+            <div class="input-group has-validation">
+              <input type="email" class="form-control" id="email" name="email" required>
+              <div class="invalid-feedback">
+                Please use a valid email.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="room" class="form-label">Choose a room</label>
+            <select class="form-select" id="room" name="room" aria-label="Default select example" required>
+              <option selected disable value="">...</option>
               <option value="1">One</option>
               <option value="2">Two</option>
-              <option value="3">Any available</option>
             </select>
+            <div class="invalid-feedback">
+              Please choose a room.
+            </div>
           </div>
-
-          <div class="input-group">
-            <span class="input-group-text">Check in date</span>
-            <input required type="date" class="form-control" id="start_date" name="start_date" aria-describedby="startDatelHelp">
-            <span class="input-group-text">Check out date</span>
-            <input required type="date" class="form-control" id="end_date" name="start_date" aria-describedby="endDateHelp">
+          <div class="col-md-3">
+            <label for="start_date" class="form-label">Check In</label>
+            <input required type="date" class="form-control" id="start_date" name="start_date" aria-describedby="startDatelHelp" required>
+            <div class="invalid-feedback">
+              Please select a valid check in date.
+            </div>
           </div>
-
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="col-md-3">
+            <label for="end_date" class="form-label">Check Out</label>
+            <input required type="date" class="form-control" id="end_date" name="end_date" aria-describedby="endDateHelp" required>
+            <div class="invalid-feedback">
+              Please provide a valid zip.
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">Book Reservation</button>
+          </div>
         </form>
       </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script> 
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict'
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll('.needs-validation')
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+  </script>
 </body>
 </html>
