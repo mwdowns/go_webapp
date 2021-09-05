@@ -2,10 +2,11 @@ package handlers
 
 import (
 	"fmt"
-	"go_webapp/pkg/config"
-	"go_webapp/pkg/models"
-	"go_webapp/pkg/render"
 	"net/http"
+
+	"github.com/mwdowns/go_webapp/pkg/config"
+	"github.com/mwdowns/go_webapp/pkg/models"
+	"github.com/mwdowns/go_webapp/pkg/render"
 )
 
 type Repository struct {

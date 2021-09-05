@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
-	"go_webapp/pkg/config"
-	"go_webapp/pkg/constants"
-	"go_webapp/pkg/handlers"
-	"go_webapp/pkg/render"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/mwdowns/go_webapp/pkg/config"
+	"github.com/mwdowns/go_webapp/pkg/constants"
+	"github.com/mwdowns/go_webapp/pkg/handlers"
+	"github.com/mwdowns/go_webapp/pkg/render"
 
 	"github.com/alexedwards/scs/v2"
 )

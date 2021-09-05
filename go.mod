@@ -1,4 +1,4 @@
-module go_webapp
+module github.com/mwdowns/go_webapp
 
 go 1.17
 
