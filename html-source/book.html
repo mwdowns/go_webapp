@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/css/datepicker-bs4.min.css">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
   <title>Make Reservation</title>
 </head>
 <body>
@@ -69,29 +71,33 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <label for="room" class="form-label">Choose a room</label>
-            <select class="form-select" id="room" name="room" aria-label="Default select example" required>
-              <option selected disable value="">...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-            </select>
-            <div class="invalid-feedback">
-              Please choose a room.
-            </div>
-          </div>
-          <div class="col-md-3">
-            <label for="start_date" class="form-label">Check In</label>
-            <input required type="date" class="form-control" id="start_date" name="start_date" aria-describedby="startDatelHelp" required>
-            <div class="invalid-feedback">
-              Please select a valid check in date.
-            </div>
-          </div>
-          <div class="col-md-3">
-            <label for="end_date" class="form-label">Check Out</label>
-            <input required type="date" class="form-control" id="end_date" name="end_date" aria-describedby="endDateHelp" required>
-            <div class="invalid-feedback">
-              Please provide a valid zip.
+          <div class="containter">
+            <div class="row" id="date-picker">
+              <div class="col-md-6">
+                <label for="room" class="form-label">Choose a room</label>
+                <select class="form-select" id="room" name="room" aria-label="Default select example" required>
+                  <option selected disable value="">...</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please choose a room.
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="start_date" class="form-label">Check In</label>
+                <input required class="form-control" id="start_date" name="start_date" aria-describedby="startDateHelp">
+                <div class="invalid-feedback">
+                  Please select a valid check in date.
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="end_date" class="form-label">Check Out</label>
+                <input required class="form-control" id="end_date" name="end_date" aria-describedby="endDateHelp">
+                <div class="invalid-feedback">
+                  Please select a valid check out date.
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-12">
@@ -102,28 +108,11 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script> 
-  <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-      'use strict'
-
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.querySelectorAll('.needs-validation')
-
-      // Loop over them and prevent submission
-      Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-          form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-              event.preventDefault()
-              event.stopPropagation()
-            }
-
-            form.classList.add('was-validated')
-          }, false)
-        })
-    })()
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker-full.min.js"></script>
+  <script src="https://unpkg.com/notie"></script>
+  <script src="./static/js/validation.js"></script>
+  <script src="./static/js/date-picker.js"></script>
+  <script src="./static/js/notifications.js"></script>
 </body>
 </html>
